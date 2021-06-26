@@ -19,10 +19,11 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Transform Models into LaTeX Equations">
-<meta property="og:description" content="The goal of equatiomatic is to reduce the pain associated with
-             writing LaTeX formulas from fitted models. The primary function of
-             the package, extract_eq(), takes a fitted model object as its input
-             and returns the corresponding LaTeX code for the model.">
+<meta property="og:description" content="The goal of equatiomatic is to reduce the pain
+    associated with writing LaTeX formulas from fitted models. The
+    primary function of the package, extract_eq(), takes a fitted model
+    object as its input and returns the corresponding LaTeX code for the
+    model.">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -42,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">equatiomatic</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -50,7 +51,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -65,10 +66,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/forecast-arima.html">forecast::Arima Models</a>
+    </li>
+    <li>
       <a href="articles/intro-equatiomatic.html">Introduction to {equatiomatic}</a>
     </li>
     <li>
-      <a href="articles/lmer4-lmer.html">lme4::lmer Models</a>
+      <a href="articles/lme4-lmer.html">lme4::lmer Models</a>
+    </li>
+    <li>
+      <a href="articles/plotting-integration.html">Plotting with {equatiomatic}</a>
     </li>
     <li>
       <a href="articles/tests_and_coverage.html">Tests and Coverage</a>
@@ -82,7 +89,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/datalorax/equatiomatic/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -104,7 +111,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><a href="https://tinyurl.com/y43gpto4"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_10_26-red.svg" alt="Covrpage Summary"></a> <!-- [![codecov](https://codecov.io/gh/datalorax/equatiomatic/branch/master/graph/badge.svg)](https://codecov.io/gh/datalorax/equatiomatic) --></p>
+<p><a href="https://tinyurl.com/y43gpto4"><img src="https://img.shields.io/badge/covrpage-Last_Build_2021_06_26-brightgreen.svg" alt="Covrpage Summary"></a> <!-- [![codecov](https://codecov.io/gh/datalorax/equatiomatic/branch/master/graph/badge.svg)](https://codecov.io/gh/datalorax/equatiomatic) --></p>
 <p><a href="https://github.com/datalorax/equatiomatic/actions"><img src="https://github.com/datalorax/equatiomatic/workflows/R-CMD-check/badge.svg" alt="R build status"></a></p>
 <p><a href="https://codecov.io/gh/datalorax/equatiomatic?branch=master"><img src="https://codecov.io/gh/datalorax/equatiomatic/branch/master/graph/badge.svg" alt="Codecov test coverage"></a> <!-- badges: end --></p>
 <p>The goal of <strong>equatiomatic</strong> is to reduce the pain associated with writing LaTeX code from a fitted model. In the future, the package aims to support any model supported by <a href="https://cran.r-project.org/package=broom"><strong>broom</strong></a>. See the <a href="https://datalorax.github.io/equatiomatic/articles/intro-equatiomatic.html#other-models-1">introduction to equatiomatic</a> for currently supported models.</p>
@@ -400,6 +407,7 @@
 <ul class="list-unstyled">
 <li>Daniel Anderson <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/https://orcid.org/0000-0003-4699-4680" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Andrew Heiss <br><small class="roles"> Author </small> <a href="https://orcid.org/https://orcid.org/0000-0002-3948-3914" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Jay Sumners <br><small class="roles"> Author </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -407,7 +415,7 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
 </ul>
 </div>
 </div>
@@ -415,7 +423,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Daniel Anderson, Andrew Heiss.</p>
+  <p>Developed by Daniel Anderson, Andrew Heiss, Jay Sumners.</p>
 </div>
 
 <div class="pkgdown">

@@ -83,7 +83,7 @@ schools/districts." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">equatiomatic</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -91,7 +91,7 @@ schools/districts." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -106,10 +106,16 @@ schools/districts." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/forecast-arima.html">forecast::Arima Models</a>
+    </li>
+    <li>
       <a href="../articles/intro-equatiomatic.html">Introduction to {equatiomatic}</a>
     </li>
     <li>
-      <a href="../articles/lmer4-lmer.html">lme4::lmer Models</a>
+      <a href="../articles/lme4-lmer.html">lme4::lmer Models</a>
+    </li>
+    <li>
+      <a href="../articles/plotting-integration.html">Plotting with {equatiomatic}</a>
     </li>
     <li>
       <a href="../articles/tests_and_coverage.html">Tests and Coverage</a>
@@ -123,7 +129,7 @@ schools/districts." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/datalorax/equatiomatic/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -156,13 +162,20 @@ schools/districts.</p>
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>A tibble with 1000 rows and 8 variables:</p><dl'>
-<dt>sid</dt><dd><p>An integer denoting the individual student. There are 100 students.</p></dd>
+<dt>sid</dt><dd><p>An integer denoting the individual student.
+There are 100 students.</p></dd>
 <dt>school</dt><dd><p>An integer denoting the school There are 15 schools.</p></dd>
-<dt>district</dt><dd><p>An integer denoting the school district. There are 5 districts.</p></dd>
-<dt>group</dt><dd><p>A character variable denoting the instructional level of the student, low, medium, or high.</p></dd>
-<dt>treatment</dt><dd><p>A factor indicating whether the student received the intervention treatment (0 = no treatment received; 1 = treatment received).</p></dd>
-<dt>prop_low</dt><dd><p>The proportion of student in the school in the low instructional group.</p></dd>
-<dt>wave</dt><dd><p>The assessment wave. Each student has nine waves of data collection</p></dd>
+<dt>district</dt><dd><p>An integer denoting the school district. There are
+5 districts.</p></dd>
+<dt>group</dt><dd><p>A character variable denoting the instructional level of
+the student, low, medium, or high.</p></dd>
+<dt>treatment</dt><dd><p>A factor indicating whether the student received the
+intervention treatment (0 = no treatment received; 1 = treatment
+received).</p></dd>
+<dt>prop_low</dt><dd><p>The proportion of student in the school in the low
+instructional group.</p></dd>
+<dt>wave</dt><dd><p>The assessment wave. Each student has nine waves of data
+collection</p></dd>
 <dt>score</dt><dd><p>The individual students' score at the given wave.</p></dd>
 
 </dl>
@@ -179,7 +192,7 @@ schools/districts.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Daniel Anderson, Andrew Heiss.</p>
+  <p>Developed by Daniel Anderson, Andrew Heiss, Jay Sumners.</p>
 </div>
 
 <div class="pkgdown">

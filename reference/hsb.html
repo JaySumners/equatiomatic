@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">equatiomatic</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -105,10 +105,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/forecast-arima.html">forecast::Arima Models</a>
+    </li>
+    <li>
       <a href="../articles/intro-equatiomatic.html">Introduction to {equatiomatic}</a>
     </li>
     <li>
-      <a href="../articles/lmer4-lmer.html">lme4::lmer Models</a>
+      <a href="../articles/lme4-lmer.html">lme4::lmer Models</a>
+    </li>
+    <li>
+      <a href="../articles/plotting-integration.html">Plotting with {equatiomatic}</a>
     </li>
     <li>
       <a href="../articles/tests_and_coverage.html">Tests and Coverage</a>
@@ -122,7 +128,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/datalorax/equatiomatic/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -154,14 +160,20 @@
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>A tibble with 7185 rows and 8 variables:</p><dl'>
-<dt>sch.id</dt><dd><p>An integer denoting the school identification number. There are 160 unique schools.</p></dd>
+<dt>sch.id</dt><dd><p>An integer denoting the school identification number.
+There are 160 unique schools.</p></dd>
 <dt>math</dt><dd><p>Individual students' math score.</p></dd>
 <dt>size</dt><dd><p>The number of students in the school.</p></dd>
-<dt>sector</dt><dd><p>A dummy variable (integer) denoting whether the school is public (sector = 0) or catholic (sector = 1). There are 90 public schools and 70 catholic.</p></dd>
+<dt>sector</dt><dd><p>A dummy variable (integer) denoting whether the school is
+public (sector = 0) or catholic (sector = 1). There are 90 public schools
+and 70 catholic.</p></dd>
 <dt>meanses</dt><dd><p>A group-mean centered SES variable at the school level</p></dd>
-<dt>minority</dt><dd><p>A dummy variable indicating if the student was coded as white (minority = 0) or not (minority = 1).</p></dd>
-<dt>female</dt><dd><p>A dummy variable indicating if the student was coded as female (female = 1) or not (female = 0).</p></dd>
-<dt>ses</dt><dd><p>A student-level composite variable indicating the students' socio-economic status.</p></dd>
+<dt>minority</dt><dd><p>A dummy variable indicating if the student was coded as
+white (minority = 0) or not (minority = 1).</p></dd>
+<dt>female</dt><dd><p>A dummy variable indicating if the student was coded as
+female (female = 1) or not (female = 0).</p></dd>
+<dt>ses</dt><dd><p>A student-level composite variable indicating the students'
+socio-economic status.</p></dd>
 
 </dl>
 
@@ -177,7 +189,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Daniel Anderson, Andrew Heiss.</p>
+  <p>Developed by Daniel Anderson, Andrew Heiss, Jay Sumners.</p>
 </div>
 
 <div class="pkgdown">

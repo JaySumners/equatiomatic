@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">equatiomatic</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -89,7 +89,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -104,10 +104,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/forecast-arima.html">forecast::Arima Models</a>
+    </li>
+    <li>
       <a href="../articles/intro-equatiomatic.html">Introduction to {equatiomatic}</a>
     </li>
     <li>
-      <a href="../articles/lmer4-lmer.html">lme4::lmer Models</a>
+      <a href="../articles/lme4-lmer.html">lme4::lmer Models</a>
+    </li>
+    <li>
+      <a href="../articles/plotting-integration.html">Plotting with {equatiomatic}</a>
     </li>
     <li>
       <a href="../articles/tests_and_coverage.html">Tests and Coverage</a>
@@ -121,7 +127,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/datalorax/equatiomatic/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -147,9 +153,23 @@
 <a href="#equatiomatic-development-version" class="anchor"></a>equatiomatic (development version)<small> Unreleased </small>
 </h1>
 <ul>
-<li>Uses new print method so users no longer have to specify <code>results = "asis"</code> in the R Markdown chunk option</li>
-<li>Fixed error in rendering logistic/probit regression equations by removing the epsilon (error term) at the end of the left-hand side</li>
-<li>The epsilon (error term) is no longer being shown when rendering the fitted model equation, i.e. <code>use_coefs = TRUE</code>, for <code>lm</code> models. The hat sign is also added to the response variable.</li>
+<li>Added new <code>font_size</code> argument, which takes any LaTeX font size (see <a href="https://www.overleaf.com/learn/latex/Font_sizes,_families,_and_styles#Font_styles">here</a>)</li>
+<li>Bug fix related to categorical variables and level parsing for <code><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lme4::lmer()</a></code> models</li>
+<li>Minor bug fix related to indexing of coefficients for <code><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lme4::lmer()</a></code> models</li>
+</ul>
+</div>
+    <div id="equatiomatic-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#equatiomatic-020" class="anchor"></a>equatiomatic 0.2.0<small> 2021-01-30 </small>
+</h1>
+<ul>
+<li><p><strong>New models</strong>: This is the first version to support <code><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lme4::lmer()</a></code> models and <code><a href="https://rdrr.io/pkg/forecast/man/Arima.html">forecast::Arima()</a></code> models.</p></li>
+<li><p>New vignettes for each of the new models supported.</p></li>
+<li><p>New vignette showing how to use the package with plotting</p></li>
+<li><p>Switched the testing framework to use snapshot testing</p></li>
+<li><p>Uses new print method so users no longer have to specify <code>results = "asis"</code> in the R Markdown chunk option</p></li>
+<li><p>Fixed error in rendering logistic/probit regression equations by removing the epsilon (error term) at the end of the left-hand side</p></li>
+<li><p>The epsilon (error term) is no longer shown when rendering the fitted model equation, i.e. <code>use_coefs = TRUE</code>, for <code>lm</code> models. The hat sign is also added to the response variable.</p></li>
 </ul>
 </div>
     <div id="equatiomatic-010" class="section level1">
@@ -157,17 +177,15 @@
 <a href="#equatiomatic-010" class="anchor"></a>equatiomatic 0.1.0<small> 2020-08-27 </small>
 </h1>
 <ul>
-<li>Initial CRAN Release</li>
-<li>Extracts equations for <code>lm</code> models</li>
-<li>Extracts equations for <code>glm</code> models with <code>family = binomial(link = "logit")</code> or <code>family = binomial(link = "probit")</code>
-</li>
-<li>Extracts equations form ordered regression models using <code><a href="https://rdrr.io/pkg/MASS/man/polr.html">MASS::polr</a></code> or <code>ordered::clm</code> for logit and probit link functions</li>
-<li>
-<code>glm</code> models have an optional <code>show_distribution</code> argument to show the distributional assumptions</li>
-<li>All equations can be displayed using Greek notation or the estimated coefficients</li>
-<li>The <code>raw_tex</code> code can be used to supply custom TeX code for the intercept or the coefficients, through the <code>intercept</code> and <code>greek</code> arguments respectively</li>
-<li>Long equations can be wrapped to multiple lines with the optional <code>wrap</code> argument. The length of the wrapping is controlled by <code>terms_per_line</code>.</li>
-<li>Added a <code>NEWS.md</code> file to track subsequent changes to the package.</li>
+<li><p>Initial CRAN Release</p></li>
+<li><p>Extracts equations for <code>lm</code> models</p></li>
+<li><p>Extracts equations for <code>glm</code> models with <code>family = binomial(link = "logit")</code> or <code>family = binomial(link = "probit")</code></p></li>
+<li><p>Extracts equations form ordered regression models using <code><a href="https://rdrr.io/pkg/MASS/man/polr.html">MASS::polr</a></code> or <code>ordered::clm</code> for logit and probit link functions</p></li>
+<li><p><code>glm</code> models have an optional <code>show_distribution</code> argument to show the distributional assumptions</p></li>
+<li><p>All equations can be displayed using Greek notation or the estimated coefficients</p></li>
+<li><p>The <code>raw_tex</code> code can be used to supply custom TeX code for the intercept or the coefficients, through the <code>intercept</code> and <code>greek</code> arguments respectively</p></li>
+<li><p>Long equations can be wrapped to multiple lines with the optional <code>wrap</code> argument. The length of the wrapping is controlled by <code>terms_per_line</code>.</p></li>
+<li><p>Added a <code>NEWS.md</code> file to track subsequent changes to the package.</p></li>
 </ul>
 </div>
   </div>
@@ -183,7 +201,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Daniel Anderson, Andrew Heiss.</p>
+  <p>Developed by Daniel Anderson, Andrew Heiss, Jay Sumners.</p>
 </div>
 
 <div class="pkgdown">

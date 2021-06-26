@@ -49,9 +49,7 @@
   
 
 <meta property="og:title" content="'LaTeX' code for R models — extract_eq" />
-<meta property="og:description" content="Extract the variable names from a model to produce a 'LaTeX' equation, which is
-output to the screen. Supports any model supported by
-broom::tidy." />
+<meta property="og:description" content="" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -84,7 +82,7 @@ broom::tidy." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">equatiomatic</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -92,7 +90,7 @@ broom::tidy." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -107,10 +105,16 @@ broom::tidy." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/forecast-arima.html">forecast::Arima Models</a>
+    </li>
+    <li>
       <a href="../articles/intro-equatiomatic.html">Introduction to {equatiomatic}</a>
     </li>
     <li>
-      <a href="../articles/lmer4-lmer.html">lme4::lmer Models</a>
+      <a href="../articles/lme4-lmer.html">lme4::lmer Models</a>
+    </li>
+    <li>
+      <a href="../articles/plotting-integration.html">Plotting with {equatiomatic}</a>
     </li>
     <li>
       <a href="../articles/tests_and_coverage.html">Tests and Coverage</a>
@@ -124,7 +128,7 @@ broom::tidy." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/datalorax/equatiomatic/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -147,9 +151,7 @@ broom::tidy." />
     </div>
 
     <div class="ref-description">
-    <p>Extract the variable names from a model to produce a 'LaTeX' equation, which is
-output to the screen. Supports any model supported by
-<a href='https://broom.tidymodels.org/reference/reexports.html'>broom::tidy</a>.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
     </div>
 
     <pre class="usage"><span class='fu'>extract_eq</span>(
@@ -166,7 +168,9 @@ output to the screen. Supports any model supported by
   <span class='kw'>use_coefs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>coef_digits</span> <span class='kw'>=</span> <span class='fl'>2</span>,
   <span class='kw'>fix_signs</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>font_size</span>,
   <span class='no'>mean_separate</span>,
+  <span class='kw'>return_variances</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -249,6 +253,12 @@ coefficient estimates that are negative are preceded with a "+" (e.g.
 <code>5(x) - 3(z)</code>).</p></td>
     </tr>
     <tr>
+      <th>font_size</th>
+      <td><p>The font size of the equation. Defaults to default of
+the output format. Takes any of the standard LaTeX arguments (see
+<a href='https://www.overleaf.com/learn/latex/Font_sizes,_families,_and_styles#Font_styles'>here</a>).</p></td>
+    </tr>
+    <tr>
       <th>mean_separate</th>
       <td><p>Currently only support for <code><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></code>
 models. Should the mean structure be inside or separated from the
@@ -259,6 +269,13 @@ outcome ~ N(mu, sigma); mu = alpha + beta_1(wave). If <code>FALSE</code>, this
 same equation would be outcome ~ N(alpha + beta, sigma).</p></td>
     </tr>
     <tr>
+      <th>return_variances</th>
+      <td><p>Logical. When <code>use_coefs = TRUE</code> with a mixed
+effects model (e.g., <code><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lme4::lmer()</a></code>), should the variances and
+co-variances be returned? If <code>FALSE</code> (the default) standard deviations
+and correlations are returned instead.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>Additional arguments (for future development; not currently used).</p></td>
     </tr>
@@ -267,6 +284,11 @@ same equation would be outcome ~ N(alpha + beta, sigma).</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A character of class &#8220;equation&#8221;.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Extract the variable names from a model to produce a 'LaTeX' equation, which is
+output to the screen. Supports any model supported by
+<a href='https://broom.tidymodels.org/reference/reexports.html'>broom::tidy</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Simple model</span>
@@ -285,11 +307,13 @@ same equation would be outcome ~ N(alpha + beta, sigma).</p></td>
 #&gt; \operatorname{body\_mass\_g} = \alpha + \beta_{1}(\operatorname{bill\_length\_mm}) + \beta_{2}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{3}(\operatorname{species}_{\operatorname{Gentoo}}) + \epsilon
 #&gt; $$</div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>8675309</span>)
-<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>cat1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='fl'>100</span>),
-                <span class='kw'>cat2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>100</span>),
-                <span class='kw'>cont1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>300</span>, <span class='fl'>100</span>, <span class='fl'>1</span>),
-                <span class='kw'>cont2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>300</span>, <span class='fl'>50</span>, <span class='fl'>5</span>),
-                <span class='kw'>out</span>   <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>300</span>, <span class='fl'>10</span>, <span class='fl'>0.5</span>))
+<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+  <span class='kw'>cat1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='fl'>100</span>),
+  <span class='kw'>cat2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>100</span>),
+  <span class='kw'>cont1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>300</span>, <span class='fl'>100</span>, <span class='fl'>1</span>),
+  <span class='kw'>cont2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>300</span>, <span class='fl'>50</span>, <span class='fl'>5</span>),
+  <span class='kw'>out</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>300</span>, <span class='fl'>10</span>, <span class='fl'>0.5</span>)
+)
 <span class='no'>mod4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>out</span> ~ <span class='no'>.</span>, <span class='no'>d</span>)
 <span class='fu'>extract_eq</span>(<span class='no'>mod4</span>)</div><div class='output co'>#&gt; $$
 #&gt; \operatorname{out} = \alpha + \beta_{1}(\operatorname{cat1}_{\operatorname{b}}) + \beta_{2}(\operatorname{cat1}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat2}_{\operatorname{B}}) + \beta_{4}(\operatorname{cat2}_{\operatorname{C}}) + \beta_{5}(\operatorname{cont1}) + \beta_{6}(\operatorname{cont2}) + \epsilon
@@ -335,11 +359,13 @@ same equation would be outcome ~ N(alpha + beta, sigma).</p></td>
 #&gt; $$</div><div class='input'>
 <span class='co'># Use other model types, like glm</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>8675309</span>)
-<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>out</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>0</span>:<span class='fl'>1</span>, <span class='fl'>100</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-                <span class='kw'>cat1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='fl'>100</span>),
-                <span class='kw'>cat2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>100</span>),
-                <span class='kw'>cont1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>300</span>, <span class='fl'>100</span>, <span class='fl'>1</span>),
-                <span class='kw'>cont2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>300</span>, <span class='fl'>50</span>, <span class='fl'>5</span>))
+<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+  <span class='kw'>out</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>0</span>:<span class='fl'>1</span>, <span class='fl'>100</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
+  <span class='kw'>cat1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='fl'>100</span>),
+  <span class='kw'>cat2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>100</span>),
+  <span class='kw'>cont1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>300</span>, <span class='fl'>100</span>, <span class='fl'>1</span>),
+  <span class='kw'>cont2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>300</span>, <span class='fl'>50</span>, <span class='fl'>5</span>)
+)
 <span class='no'>mod5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span>(<span class='no'>out</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"logit"</span>))
 <span class='fu'>extract_eq</span>(<span class='no'>mod5</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; $$
 #&gt; \begin{aligned}
@@ -358,7 +384,7 @@ same equation would be outcome ~ N(alpha + beta, sigma).</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Daniel Anderson, Andrew Heiss.</p>
+  <p>Developed by Daniel Anderson, Andrew Heiss, Jay Sumners.</p>
 </div>
 
 <div class="pkgdown">
